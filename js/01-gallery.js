@@ -13,8 +13,11 @@ const galleryImages = galleryItems
   .join("");
 gallery.insertAdjacentHTML("afterbegin", galleryImages);
 gallery.addEventListener("click", (event) => {
+  event.preventDefault();
   const imageUrl = event.target.dataset.source;
   const imageAlt = event.target.alt;
-  const instance = basicLightbox.create(`<img src="${imageUrl}" alt="${imageAlt}">`).show();
-  instance.show()
+
+  const instance = basicLightbox.create(`
+  <img src="${imageUrl}" alt="${imageAlt}">`);
+  instance.show();
 });
